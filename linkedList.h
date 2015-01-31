@@ -2,6 +2,7 @@ typedef struct linkedList LinkedList;
 
 typedef struct node Node;
 typedef Node* nodePtr;
+typedef char* string;
 typedef void perform (void*);
 
 struct linkedList {
@@ -24,3 +25,5 @@ void traverse(LinkedList, perform * func);
 void * getElementAt(LinkedList, int);
 int indexOf(LinkedList, void *);
 void * deleteElementAt(LinkedList *, int);
+int asArray(LinkedList, void **);
+LinkedList * filter(LinkedList, int (*)(void *));

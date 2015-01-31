@@ -85,3 +85,33 @@ void * deleteElementAt(LinkedList* studentInfo, int index){
 	studentInfo->count--;
 	return walker->data;
 };
+
+int asArray(LinkedList studentInfo, void** array){
+	int i;
+	Node* walker = studentInfo.head;
+	for(i = 0; i < studentInfo.count; i++){
+		array[i] = walker->data;
+		walker = walker->next;
+	}
+	return i;
+};
+
+LinkedList *filter(LinkedList studentInfo, int (*func)(void *)){
+	int i;
+	LinkedList *filteredList = malloc(sizeof(LinkedList));
+	*filteredList = createList();
+	for(i = 0; i < studentInfo.count; i++){
+		if((*func)(studentInfo.head->data)){
+			add_to_list(filteredList, studentInfo.head);			
+		}
+		studentInfo.head = studentInfo.head->next;
+	}	
+	return filteredList;
+}
+
+
+
+
+
+
+
