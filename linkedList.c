@@ -42,6 +42,46 @@ void traverse(LinkedList list, perform* func){
 	}
 }
 
+void * getElementAt(LinkedList list, int index){
+	int i;
+	Node* walker = list.head;
+	if(index >= list.count)
+		return NULL;
+	for(i = 0;i < index; i++)
+		walker = walker->next;
+	return &walker->data;
+}
 
+int indexOf(LinkedList studentInfo, void * element){
+	int i;
+	Node* walker = studentInfo.head;
+	for(i = 0; i < studentInfo.count; i++){
+		if(walker->data == element)
+			return i;
+		walker = walker->next;
+	}	
+	return -1;
+}
 
-
+void * deleteElementAt(LinkedList* studentInfo, int index){
+	int i;
+	Node* walker = studentInfo->head;
+	Node* checker;
+	if(index==0){
+		studentInfo->head = studentInfo->head->next;
+		if(studentInfo->count==0)
+			studentInfo->tail = NULL;
+		return walker->data;
+	}
+	if(studentInfo->count <= index)
+		return NULL;
+	for(i = 0; i < index; i++){
+		checker = walker;
+		walker = walker->next;
+	}
+	if(walker->next == NULL)
+		studentInfo->tail = checker;
+	checker->next = walker->next;
+	studentInfo->count--;
+	return walker->data;
+};

@@ -21,6 +21,6 @@ int add_to_list(LinkedList *,Node *);
 void *get_first_element(LinkedList list);
 void *get_last_element(LinkedList list);
 void traverse(LinkedList, perform * func);
-
-
-
+void * getElementAt(LinkedList, int);
+int indexOf(LinkedList, void *);
+void * deleteElementAt(LinkedList *, int);
