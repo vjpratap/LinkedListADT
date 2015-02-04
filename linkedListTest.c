@@ -553,24 +553,6 @@ void test_that_deleteElementAt_delete_the_tail_when_index_is_equal_to_the_number
 	assertEqual((*(int *)get_last_element(studentsInfo)),(*(int *)student2));	
 }
 
-void test_deleteElemetAt_will_delete_hello_and_give_gell_atFirst_index(){
-	string name = "hello";
-	string name1 = "gello";
-	nodePtr expected1,expected,result;
-	LinkedList list = createList();
-
-	expected = create_node((void*)name);
-	add_to_list(&list,expected);
-	
-	expected1 = create_node((void*)name1);
-	add_to_list(&list,expected1);
-
-	result = deleteElementAt(&list,0);
-
-	assertEqual(strcmp((char*)result,"hello"),0);
-	free(expected);
-	free(expected1);
-};
 
 void test_delete_string_from_a_list_by_given_index_1_and_gello_will_be_nomore_there(){
 	string name = "hello";

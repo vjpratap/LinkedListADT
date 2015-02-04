@@ -63,28 +63,26 @@ int indexOf(LinkedList studentInfo, void * element){
 	return -1;
 }
 
-void * deleteElementAt(LinkedList* studentInfo, int index){
+void * deleteElementAt(LinkedList *studentInfo, int index){
 	int i;
-	Node* walker = studentInfo->head;
-	Node* checker;
-	if(index==0){
-		studentInfo->head = studentInfo->head->next;
-		if(studentInfo->count==0)
-			studentInfo->tail = NULL;
-		return walker->data;
-	}
-	if(studentInfo->count <= index)
+	void* data;
+	Node* walker =studentInfo->head;
+	Node* previousNode=NULL;
+	
+	if(index >= studentInfo->count || index < 0) 
 		return NULL;
-	for(i = 0; i < index; i++){
-		checker = walker;
+	for(i = 0;i < index;i++){
+		previousNode = walker;
 		walker = walker->next;
 	}
-	if(walker->next == NULL)
-		studentInfo->tail = checker;
-	checker->next = walker->next;
+	if(studentInfo->tail == walker) 
+		studentInfo->tail = previousNode;
+	data = walker->data;
+	previousNode ? (previousNode->next = walker->next) : (studentInfo->head = studentInfo->head->next);
 	studentInfo->count--;
-	return walker->data;
-};
+	free(walker);
+	return data;
+}
 
 int asArray(LinkedList studentInfo, void** array){
 	int i;
