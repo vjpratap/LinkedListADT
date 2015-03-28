@@ -49,7 +49,7 @@ void * getElementAt(LinkedList list, int index){
 		return NULL;
 	for(i = 0;i < index; i++)
 		walker = walker->next;
-	return &walker->data;
+	return walker->data;
 }
 
 int indexOf(LinkedList studentInfo, void * element){
